@@ -1,0 +1,11 @@
+Package: namaespace
+Title: Utility to create dummy R packages for namespace.
+Version: 0.0.0.9000
+Authors@R: person('Watal M.', 'Iwasaki', email='heavy.watal@gmail.com', role=c('aut', 'cre'))
+Description: Utility to create dummy R packages for namespace.
+Depends: R (>= 3.2.0)
+License: MIT
+LazyData: true
+Imports: readr
+URL: https://github.com/heavywatal/namaespace
+BugReports: https://github.com/heavywatal/namaespace/issues
