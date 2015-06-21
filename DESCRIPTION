@@ -6,6 +6,6 @@ Description: Utility to create dummy R packages for namespace.
 Depends: R (>= 3.2.0)
 License: file LICENSE
 LazyData: true
-Imports: readr
+Imports: devtools, readr
 URL: https://github.com/heavywatal/namaespace
 BugReports: https://github.com/heavywatal/namaespace/issues
