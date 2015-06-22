@@ -36,16 +36,19 @@ import_export_all = function(packages, path='.') {
 load_in_namespace = function(namespace, packages) {
     installed = rownames(installed.packages())
     stopifnot(all(packages %in% installed))
-    desc = sprintf('Dummy package to use a namespace "%s".', namespace)
-    devtools::create(namespace, description=list(
-        Package=namespace, Title=desc,
+    path = file.path(tempdir(), namespace)
+    title = sprintf('Dummy package to use a namespace "%s".', namespace)
+    description = list(
+        Package=namespace, Title=title,
         `Authors@R`='person("Nelson", "Sauvin",
             email="user@example.com", role=c("aut", "cre"))',
-        Description=desc,
+        Description=title,
         License='MIT',
         Imports=paste(packages, collapse=', '),
         URL='https://github.com/heavywatal/namaespace',
-        BugReports='https://github.com/heavywatal/namaespace/issues'))
-    import_export_all(packages, namespace)
-    devtools::load_all(namespace)
+        BugReports='https://github.com/heavywatal/namaespace/issues')
+    devtools::create(path, description=description, rstudio=FALSE)
+    import_export_all(packages, path)
+    devtools::load_all(path)
+    unlink(path, recursive=TRUE)
 }
