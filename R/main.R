@@ -37,6 +37,7 @@ load_in_namespace = function(namespace, packages) {
     installed = rownames(installed.packages())
     stopifnot(all(packages %in% installed))
     path = file.path(tempdir(), namespace)
+    unlink(path, recursive=TRUE)
     title = sprintf('Dummy package to use a namespace "%s".', namespace)
     description = list(
         Package=namespace, Title=title,
@@ -50,5 +51,4 @@ load_in_namespace = function(namespace, packages) {
     devtools::create(path, description=description, rstudio=FALSE)
     import_export_all(packages, path)
     devtools::load_all(path)
-    unlink(path, recursive=TRUE)
 }
