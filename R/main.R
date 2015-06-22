@@ -41,8 +41,7 @@ load_in_namespace = function(namespace, packages) {
     title = sprintf('Dummy package to use a namespace "%s".', namespace)
     description = list(
         Package=namespace, Title=title,
-        `Authors@R`='person("Nelson", "Sauvin",
-            email="user@example.com", role=c("aut", "cre"))',
+        `Authors@R`=getOption('devtools.desc.author'),
         Description=title,
         License='MIT',
         Imports=paste(packages, collapse=', '),
