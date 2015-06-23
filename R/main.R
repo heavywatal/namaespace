@@ -2,29 +2,18 @@
 #' @docType package
 #' @name namaespace
 #' @import devtools
-#' @import readr
 NULL
 
 #' Extract export lines from NAMESPACE
 #' @param package A string
-#' @return \code{export()} lines in NAMESPACE
+#' @return A string vector of \code{export()} lines in NAMESPACE
 #' @export
 #' @examples
-#' extract_exports('readr')
-extract_exports = function(package) {
+#' exported_from('readr')
+exported_from = function(package) {
     infile = system.file('NAMESPACE', package=package)
-    content = read_lines(infile)
+    content = readLines(infile)
     grep('^export', content, value=TRUE)
-}
-
-#' Write import() and export() to NAMESPACE
-#' @param packages A string vector
-#' @param path A string
-import_export_all = function(packages, path='.') {
-    imports = sprintf('import(%s)', packages)
-    exports = unlist(lapply(packages, extract_exports))
-    output = paste(c(imports, exports), collapse='\n')
-    cat(output, file=file.path(path, 'NAMESPACE'))
 }
 
 #' Load packages and put all objects into a namespace
@@ -32,7 +21,7 @@ import_export_all = function(packages, path='.') {
 #' @param packages A string vector
 #' @export
 #' @examples
-#' load_in_namespace('had', c('devtools', 'readr'))
+#' load_in_namespace('had', c('readr', 'stringr', 'tidyr', 'dplyr', 'ggplot2'))
 load_in_namespace = function(namespace, packages) {
     installed = rownames(installed.packages())
     stopifnot(all(packages %in% installed))
@@ -48,6 +37,9 @@ load_in_namespace = function(namespace, packages) {
         URL='https://github.com/heavywatal/namaespace',
         BugReports='https://github.com/heavywatal/namaespace/issues')
     devtools::create(path, description=description, rstudio=FALSE)
-    import_export_all(packages, path)
+    imports = sprintf('import(%s)', packages)
+    exports = unlist(lapply(packages, exported_from))
+    output = paste(c(imports, exports), collapse='\n')
+    cat(output, file=file.path(path, 'NAMESPACE'))
     devtools::load_all(path)
 }

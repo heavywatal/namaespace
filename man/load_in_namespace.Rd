@@ -15,6 +15,6 @@ load_in_namespace(namespace, packages)
 Load packages and put all objects into a namespace
 }
 \examples{
-load_in_namespace('had', c('devtools', 'readr'))
+load_in_namespace('had', c('readr', 'stringr', 'tidyr', 'dplyr', 'ggplot2'))
 }
 
