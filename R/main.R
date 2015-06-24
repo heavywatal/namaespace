@@ -2,6 +2,7 @@
 #' @docType package
 #' @name namaespace
 #' @import devtools
+#' @importFrom stringr str_extract_all
 NULL
 
 #' Extract export lines from NAMESPACE
@@ -12,8 +13,8 @@ NULL
 #' exported_from('readr')
 exported_from = function(package) {
     infile = system.file('NAMESPACE', package=package)
-    content = readLines(infile)
-    grep('^export', content, value=TRUE)
+    content = readChar(infile, file.info(infile)$size)
+    unlist(str_extract_all(content, 'export\\([[:graph:][:space:]]+?\\)'))
 }
 
 #' Load packages and put all objects into a namespace

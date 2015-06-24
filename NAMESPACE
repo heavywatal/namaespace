@@ -3,3 +3,4 @@
 export(exported_from)
 export(load_in_namespace)
 import(devtools)
+importFrom(stringr,str_extract_all)

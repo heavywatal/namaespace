@@ -6,7 +6,7 @@ Description: Utility to create dummy R packages for namespace.
 Depends: R (>= 3.2.0)
 License: file LICENSE
 LazyData: true
-Suggests: readr, stringr, tidyr, dplyr, ggplot2
-Imports: devtools
+Suggests: readr, tidyr, dplyr, ggplot2
+Imports: devtools, stringr
 URL: https://github.com/heavywatal/namaespace
 BugReports: https://github.com/heavywatal/namaespace/issues
