@@ -12,6 +12,7 @@ NULL
 #' @examples
 #' exported_from('readr')
 exported_from = function(package) {
+    stopifnot(!package %in% c('base'))
     infile = system.file('NAMESPACE', package=package)
     content = readChar(infile, file.info(infile)$size)
     unlist(str_extract_all(content, 'export\\([[:graph:][:space:]]+?\\)'))
