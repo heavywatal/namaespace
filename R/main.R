@@ -15,7 +15,9 @@ exported_from = function(package) {
     stopifnot(!package %in% c('base'))
     infile = system.file('NAMESPACE', package=package)
     content = readChar(infile, file.info(infile)$size)
-    unlist(str_extract_all(content, 'export\\([[:graph:][:space:]]+?\\)'))
+    content = gsub('#.+?(\\n|$)', '', content)
+    pattern = 'export\\([[:graph:][:space:]]+?\\)'
+    unlist(str_extract_all(content, pattern))
 }
 
 #' Load packages and put all objects into a namespace
