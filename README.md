@@ -14,5 +14,8 @@ devtools::install_github('heavywatal/namaespace')
 ```{r}
 library(namaespace)
 load_in_namespace('had', c('readr', 'stringr', 'plyr', 'tidyr', 'dplyr', 'ggplot2'))
+load_in_namespace('bio', c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
+                           'S4Vectors', 'XVector', 'Biostrings',
+                           'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation'))
 iris %>% had::select(ends_with('Width'))
 ```
