@@ -2,5 +2,7 @@
 
 export(exported_from)
 export(load_in_namespace)
+export(pkgs_bio)
+export(pkgs_had)
 import(devtools)
 importFrom(stringr,str_extract_all)

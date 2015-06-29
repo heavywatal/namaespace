@@ -47,3 +47,24 @@ load_in_namespace = function(namespace, packages) {
     cat(output, file=file.path(path, 'NAMESPACE'))
     devtools::load_all(path)
 }
+
+#' Examples of package set
+#' @docType data
+#' @name pkgs
+NULL
+
+#' Hadley Wickham packages
+#' @rdname pkgs
+#' @export
+#' @examples
+#' load_in_namespace('had', pkgs_had)
+pkgs_had = c('readr', 'stringr', 'tidyr', 'plyr', 'dplyr', 'ggplot2')
+
+#' BioConductor basic packages
+#' @rdname pkgs
+#' @export
+#' @examples
+#' #load_in_namespace('bio', pkgs_bio)
+pkgs_bio = c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
+             'S4Vectors', 'XVector', 'Biostrings',
+             'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation')

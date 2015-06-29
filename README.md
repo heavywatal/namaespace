@@ -13,9 +13,22 @@ devtools::install_github('heavywatal/namaespace')
 
 ```{r}
 library(namaespace)
-load_in_namespace('had', c('readr', 'stringr', 'plyr', 'tidyr', 'dplyr', 'ggplot2'))
-load_in_namespace('bio', c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
-                           'S4Vectors', 'XVector', 'Biostrings',
-                           'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation'))
+load_in_namespace('myns', c('pkg1', 'pkg2', 'pkg3'))
+myns::pkg1_func()
+myns::pkg2_func()
+```
+
+Functions `select()` and `rename()` from `dplyr`
+often get masked by other packages.
+To avoid such conflicts, you had to write the package names explicitly
+like `dplyr::select()`.
+But it is very hard to remember where those functions are loaded from
+(plyr? dplyr? or tidyr?).
+It will be convenient if you can use those functions
+through an easy-to-remember namespace like `had`.
+
+```{r}
+load_in_namespace('had', pkgs_had)
+load_in_namespace('bio', pkgs_bio)
 iris %>% had::select(ends_with('Width'))
 ```
