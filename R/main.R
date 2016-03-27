@@ -1,8 +1,6 @@
 #' namaespace: A package to create dummy packages for namespace
 #' @docType package
 #' @name namaespace
-#' @import devtools
-#' @importFrom stringr str_extract_all
 NULL
 
 #' Extract export lines from NAMESPACE
@@ -17,7 +15,7 @@ exported_from = function(package) {
     content = readChar(infile, file.info(infile)$size)
     content = gsub('#.+?(\\n|$)', '', content)
     pattern = 'export\\([[:graph:][:space:]]+?\\)'
-    unlist(str_extract_all(content, pattern))
+    unlist(stringr::str_extract_all(content, pattern))
 }
 
 #' Load packages and put all objects into a namespace
@@ -25,7 +23,9 @@ exported_from = function(package) {
 #' @param packages A string vector
 #' @export
 #' @examples
+#' \dontrun{
 #' load_in_namespace('had', c('readr', 'stringr', 'tidyr', 'dplyr', 'ggplot2'))
+#' }
 load_in_namespace = function(namespace, packages) {
     installed = rownames(installed.packages())
     stopifnot(all(packages %in% installed))
@@ -57,14 +57,18 @@ NULL
 #' @rdname pkgs
 #' @export
 #' @examples
+#' \dontrun{
 #' load_in_namespace('had', pkgs_had)
+#' }
 pkgs_had = c('readr', 'stringr', 'tidyr', 'plyr', 'dplyr', 'ggplot2')
 
 #' BioConductor basic packages
 #' @rdname pkgs
 #' @export
 #' @examples
-#' #load_in_namespace('bio', pkgs_bio)
+#' \dontrun{
+#' load_in_namespace('bio', pkgs_bio)
+#' }
 pkgs_bio = c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
              'S4Vectors', 'XVector', 'Biostrings',
              'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation')
