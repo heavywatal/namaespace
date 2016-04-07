@@ -1,17 +1,17 @@
 # namaespace
 
-namaespace provides a function to create a dummy R package that imports and exports other packages' functions.
+`namaespace` provides a function to create a dummy R package that imports and exports other packages' functions.
 The goal is to create a temporary namespace through which you can call those functions.
 
-You can install the latest version from github with
+The latest version can be installed from github with
 
-```{r}
+```r
 devtools::install_github('heavywatal/namaespace')
 ```
 
 ## Usage
 
-```{r}
+```r
 library(namaespace)
 load_in_namespace('myns', c('pkg1', 'pkg2', 'pkg3'))
 myns::pkg1_func()
@@ -23,11 +23,11 @@ often get masked by other packages.
 To avoid such conflicts, you had to write the package names explicitly
 like `dplyr::select()`.
 But it is very hard to remember where those functions are loaded from
-(plyr? dplyr? or tidyr?).
-It will be convenient if you can use those functions
+(`plyr`? `dplyr`? or `tidyr`?).
+It will be convenient if you can call those functions
 through an easy-to-remember namespace like `had`.
 
-```{r}
+```r
 load_in_namespace('had', pkgs_had)
 load_in_namespace('bio', pkgs_bio)
 iris %>% had::select(ends_with('Width'))
