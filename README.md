@@ -27,8 +27,15 @@ But it is very hard to remember where those functions are loaded from
 It will be convenient if you can call those functions
 through an easy-to-remember namespace like `had`.
 
+Some essential packages (from
+[Hadley](https://github.com/hadley) and
+[Bioconductor](https://www.bioconductor.org/))
+are pre-defined.
+
 ```r
 load_in_namespace('had', pkgs_had)
-load_in_namespace('bio', pkgs_bio)
 iris %>% had::select(ends_with('Width'))
+
+load_in_namespace('bio', pkgs_bio)
+hg19 %>% bio::select(keys=..., columns=...)
 ```
