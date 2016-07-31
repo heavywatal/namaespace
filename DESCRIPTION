@@ -8,10 +8,11 @@ Depends:
 License: file LICENSE
 LazyData: true
 Suggests:
-    readr,
-    tidyr,
     dplyr,
-    ggplot2
+    ggplot2,
+    purrr,
+    readr,
+    tidyr
 Imports:
     devtools,
     stringr

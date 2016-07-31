@@ -16,7 +16,7 @@ Load packages and put all objects into a namespace
 }
 \examples{
 \dontrun{
-load_in_namespace('had', c('readr', 'stringr', 'tidyr', 'dplyr', 'ggplot2'))
+load_in_namespace('had', c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2'))
 }
 }
 

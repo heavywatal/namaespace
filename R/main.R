@@ -24,10 +24,10 @@ exported_from = function(package) {
 #' @export
 #' @examples
 #' \dontrun{
-#' load_in_namespace('had', c('readr', 'stringr', 'tidyr', 'dplyr', 'ggplot2'))
+#' load_in_namespace('had', c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2'))
 #' }
 load_in_namespace = function(namespace, packages) {
-    installed = rownames(installed.packages())
+    installed = rownames(utils::installed.packages())
     stopifnot(all(packages %in% installed))
     path = file.path(tempdir(), namespace)
     unlink(path, recursive=TRUE)
@@ -60,7 +60,7 @@ NULL
 #' \dontrun{
 #' load_in_namespace('had', pkgs_had)
 #' }
-pkgs_had = c('readr', 'stringr', 'tidyr', 'plyr', 'dplyr', 'ggplot2')
+pkgs_had = c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2')
 
 #' BioConductor basic packages
 #' @rdname pkgs
