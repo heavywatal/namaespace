@@ -1,11 +1,7 @@
-#' namaespace: A package to create dummy packages for namespace
-#' @docType package
-#' @name namaespace
-NULL
-
 #' Extract export lines from NAMESPACE
 #' @param package A string
 #' @return A string vector of \code{export()} lines in NAMESPACE
+#' @rdname load
 #' @export
 #' @examples
 #' exported_from('readr')
@@ -21,6 +17,7 @@ exported_from = function(package) {
 #' Load packages and put all objects into a namespace
 #' @param namespace A string
 #' @param packages A string vector
+#' @rdname load
 #' @export
 #' @examples
 #' \dontrun{
@@ -47,28 +44,3 @@ load_in_namespace = function(namespace, packages) {
     cat(output, file=file.path(path, 'NAMESPACE'))
     devtools::load_all(path)
 }
-
-#' Examples of package set
-#' @docType data
-#' @name pkgs
-NULL
-
-#' Hadley Wickham packages
-#' @rdname pkgs
-#' @export
-#' @examples
-#' \dontrun{
-#' load_in_namespace('had', pkgs_had)
-#' }
-pkgs_had = c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2')
-
-#' BioConductor basic packages
-#' @rdname pkgs
-#' @export
-#' @examples
-#' \dontrun{
-#' load_in_namespace('bio', pkgs_bio)
-#' }
-pkgs_bio = c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
-             'S4Vectors', 'XVector', 'Biostrings',
-             'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation')

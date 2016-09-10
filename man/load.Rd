@@ -2,20 +2,32 @@
 % Please edit documentation in R/main.R
 \name{exported_from}
 \alias{exported_from}
+\alias{load_in_namespace}
 \title{Extract export lines from NAMESPACE}
 \usage{
 exported_from(package)
+
+load_in_namespace(namespace, packages)
 }
 \arguments{
 \item{package}{A string}
+
+\item{namespace}{A string}
+
+\item{packages}{A string vector}
 }
 \value{
 A string vector of \code{export()} lines in NAMESPACE
 }
 \description{
 Extract export lines from NAMESPACE
+
+Load packages and put all objects into a namespace
 }
 \examples{
 exported_from('readr')
+\dontrun{
+load_in_namespace('had', c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2'))
+}
 }
 
