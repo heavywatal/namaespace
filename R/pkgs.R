@@ -3,14 +3,14 @@
 #' @name pkgs
 NULL
 
-#' Hadley Wickham packages
+#' tidyverse packages
 #' @rdname pkgs
 #' @export
 #' @examples
 #' \dontrun{
-#' load_in_namespace('had', pkgs_had)
+#' load_in_namespace('tdy', pkgs_tidyverse)
 #' }
-pkgs_had = c('plyr', 'dplyr', 'tibble', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2')
+pkgs_tidyverse = c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr')
 
 #' BioConductor basic packages
 #' @rdname pkgs

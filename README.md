@@ -23,18 +23,18 @@ often get masked by other packages.
 To avoid such conflicts, you had to write the package names explicitly
 like `dplyr::select()`.
 But it is very hard to remember where those functions are loaded from
-(`plyr`? `dplyr`? or `tidyr`?).
+(`dplyr`? `tidyr`? or `purrr`?).
 It will be convenient if you can call those functions
-through an easy-to-remember namespace like `had`.
+through an easy-to-remember namespace like `tdy`.
 
 Some essential packages (from
-[Hadley](https://github.com/hadley) and
+[tidyverse](https://github.com/tidyverse/tidyverse) and
 [Bioconductor](https://www.bioconductor.org/))
 are pre-defined.
 
 ```r
-load_in_namespace('had', pkgs_had)
-iris %>% had::select(ends_with('Width'))
+load_in_namespace('tdy', pkgs_tidyverse)
+iris %>% tdy::select(ends_with('Width'))
 
 load_in_namespace('bio', pkgs_bio)
 hg19 %>% bio::select(keys=..., columns=...)

@@ -4,24 +4,24 @@
 \name{pkgs}
 \alias{pkgs}
 \alias{pkgs_bio}
-\alias{pkgs_had}
+\alias{pkgs_tidyverse}
 \title{Examples of package set}
-\format{An object of class \code{character} of length 7.}
+\format{An object of class \code{character} of length 6.}
 \usage{
-pkgs_had
+pkgs_tidyverse
 
 pkgs_bio
 }
 \description{
 Examples of package set
 
-Hadley Wickham packages
+tidyverse packages
 
 BioConductor basic packages
 }
 \examples{
 \dontrun{
-load_in_namespace('had', pkgs_had)
+load_in_namespace('tdy', pkgs_tidyverse)
 }
 \dontrun{
 load_in_namespace('bio', pkgs_bio)

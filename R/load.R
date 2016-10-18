@@ -11,7 +11,7 @@ exported_from = function(package) {
     content = readChar(infile, file.info(infile)$size)
     content = gsub('#.+?(\\n|$)', '', content)
     pattern = 'export\\([[:graph:][:space:]]+?\\)'
-    unlist(stringr::str_extract_all(content, pattern))
+    stringr::str_extract_all(content, pattern)[[1L]]
 }
 
 #' Load packages and put all objects into a namespace
@@ -21,7 +21,7 @@ exported_from = function(package) {
 #' @export
 #' @examples
 #' \dontrun{
-#' load_in_namespace('had', c('plyr', 'dplyr', 'tidyr', 'purrr', 'readr', 'stringr', 'ggplot2'))
+#' load_in_namespace('tdy', c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr'))
 #' }
 load_in_namespace = function(namespace, packages) {
     installed = rownames(utils::installed.packages())
