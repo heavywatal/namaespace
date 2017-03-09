@@ -3,8 +3,8 @@
 \docType{data}
 \name{pkgs}
 \alias{pkgs}
-\alias{pkgs_bio}
 \alias{pkgs_tidyverse}
+\alias{pkgs_bio}
 \title{Examples of package set}
 \format{An object of class \code{character} of length 6.}
 \usage{
@@ -28,4 +28,3 @@ load_in_namespace('bio', pkgs_bio)
 }
 }
 \keyword{datasets}
-

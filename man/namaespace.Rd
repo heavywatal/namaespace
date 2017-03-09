@@ -8,4 +8,3 @@
 \description{
 namaespace: A package to create dummy packages for namespace
 }
-

@@ -14,4 +14,4 @@ Imports:
     stringr
 URL: https://github.com/heavywatal/namaespace
 BugReports: https://github.com/heavywatal/namaespace/issues
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

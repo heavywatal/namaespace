@@ -30,4 +30,3 @@ exported_from('readr')
 load_in_namespace('tdy', c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr'))
 }
 }
-
