@@ -6,12 +6,12 @@
 #' @examples
 #' exported_from('readr')
 exported_from = function(package) {
-    stopifnot(!package %in% c('base'))
-    infile = system.file('NAMESPACE', package=package)
-    content = readChar(infile, file.info(infile)$size)
-    content = gsub('#.+?(\\n|$)', '', content)
-    pattern = 'export\\([[:graph:][:space:]]+?\\)'
-    stringr::str_extract_all(content, pattern)[[1L]]
+  stopifnot(!package %in% c("base"))
+  infile = system.file("NAMESPACE", package = package)
+  content = readChar(infile, file.info(infile)$size)
+  content = gsub("#.+?(\\n|$)", "", content)
+  pattern = "export\\([[:graph:][:space:]]+?\\)"
+  stringr::str_extract_all(content, pattern)[[1L]]
 }
 
 #' Load packages and put all objects into a namespace
@@ -24,23 +24,24 @@ exported_from = function(package) {
 #' load_in_namespace('tdy', c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr'))
 #' }
 load_in_namespace = function(namespace, packages) {
-    installed = rownames(utils::installed.packages())
-    stopifnot(all(packages %in% installed))
-    path = file.path(tempdir(), namespace)
-    unlink(path, recursive=TRUE)
-    title = sprintf('Dummy package to use a namespace "%s".', namespace)
-    description = list(
-        Package=namespace, Title=title,
-        `Authors@R`=getOption('devtools.desc.author'),
-        Description=title,
-        License='MIT',
-        Imports=paste(packages, collapse=', '),
-        URL='https://github.com/heavywatal/namaespace',
-        BugReports='https://github.com/heavywatal/namaespace/issues')
-    devtools::create(path, description=description, rstudio=FALSE)
-    imports = sprintf('import(%s)', packages)
-    exports = unlist(lapply(packages, exported_from))
-    output = paste(c(imports, exports), collapse='\n')
-    cat(output, file=file.path(path, 'NAMESPACE'))
-    devtools::load_all(path)
+  installed = rownames(utils::installed.packages())
+  stopifnot(all(packages %in% installed))
+  path = file.path(tempdir(), namespace)
+  unlink(path, recursive = TRUE)
+  title = sprintf('Dummy package to use a namespace "%s".', namespace)
+  description = list(
+    Package = namespace, Title = title,
+    `Authors@R` = getOption("devtools.desc.author"),
+    Description = title,
+    License = "MIT",
+    Imports = paste(packages, collapse = ", "),
+    URL = "https://github.com/heavywatal/namaespace",
+    BugReports = "https://github.com/heavywatal/namaespace/issues"
+  )
+  devtools::create(path, description = description, rstudio = FALSE)
+  imports = sprintf("import(%s)", packages)
+  exports = unlist(lapply(packages, exported_from))
+  output = paste(c(imports, exports), collapse = "\n")
+  cat(output, file = file.path(path, "NAMESPACE"))
+  devtools::load_all(path)
 }

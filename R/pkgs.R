@@ -10,7 +10,7 @@ NULL
 #' \dontrun{
 #' load_in_namespace('tdy', pkgs_tidyverse)
 #' }
-pkgs_tidyverse = c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr')
+pkgs_tidyverse = c("dplyr", "ggplot2", "purrr", "readr", "stringr", "tibble", "tidyr")
 
 #' BioConductor basic packages
 #' @rdname pkgs
@@ -19,6 +19,8 @@ pkgs_tidyverse = c('ggplot2', 'tibble', 'tidyr', 'readr', 'purrr', 'dplyr')
 #' \dontrun{
 #' load_in_namespace('bio', pkgs_bio)
 #' }
-pkgs_bio = c('Biobase', 'IRanges', 'AnnotationDbi', 'BiocGenerics',
-             'S4Vectors', 'XVector', 'Biostrings',
-             'GenomicRanges', 'GenomicFeatures', 'VariantAnnotation')
+pkgs_bio = c(
+  "Biobase", "IRanges", "AnnotationDbi", "BiocGenerics",
+  "S4Vectors", "XVector", "Biostrings",
+  "GenomicRanges", "GenomicFeatures", "VariantAnnotation"
+)

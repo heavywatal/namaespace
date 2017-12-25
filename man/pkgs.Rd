@@ -6,7 +6,7 @@
 \alias{pkgs_tidyverse}
 \alias{pkgs_bio}
 \title{Examples of package set}
-\format{An object of class \code{character} of length 6.}
+\format{An object of class \code{character} of length 7.}
 \usage{
 pkgs_tidyverse
 
